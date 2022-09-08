@@ -38,7 +38,7 @@ name `b` and this allows us to use it in the rest of the signature. In this case
 we used the name `b` for our `if _ then _ else _` function and in `intOrString2`
 we used it to call the function `IntOrStringType`.
 
-Another note about syntax is that we used _uppercase_ letter for `IntOrString`, this
+Another note about syntax is that we used _uppercase_ letter for `IntOrStringType`, this
 is because lowercase identifiers are turned into _type variables_ and upper case ones
 are left alone. We will see what type variables are in a later section.
 
