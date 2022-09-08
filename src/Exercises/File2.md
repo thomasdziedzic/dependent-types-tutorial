@@ -23,6 +23,8 @@ failing
   reverseFail : List a -> List a
 
 reverse : (a : Type) -> List a -> List a
+reverse _ [] = []
+reverse _ (x :: xs) = reverse xs ++ [x]
 ```
 
 ### Ad-hoc vectors
@@ -48,9 +50,10 @@ First, complete the type signature of `zip` such that every argument is declared
 compile without the `failing` block. Then implement the function.
 
 ```idris
-failing
-   zip : -- add the arguments here
-      (n : Nat) -> (a -> b -> c) -> Vect n a -> Vect n b -> Vect n c
+zip : {a, b, c : Type} ->
+  (n : Nat) -> (a -> b -> c) -> Vect n a -> Vect n b -> Vect n c
+zip Z f xs ys = ()
+zip (S n) f (x, xs) (y, ys) = (f x y, zip n f xs ys)
 ```
 
 Here is a test that you program should pass:
@@ -68,9 +71,10 @@ Another staple function of vectors is the `map` function which respects the leng
 
 Same as before, add the missing arguments and implement the function
 
-```
-failing
-  map : (a -> b) -> Vect n a -> Vect n b
+```idris
+map : {a, b : Type} -> (n : Nat) -> (a -> b) -> Vect n a -> Vect n b
+map Z f xs = ()
+map (S n) f (x, xs) = (f x, map n f xs)
 ```
 
 Your implementation should allow the following test to pass
@@ -96,6 +100,9 @@ Careful, you may have to deal with _impossible patterns_.
 
 ```idris
 index : {a : Type} -> (n : Nat) -> Fin n -> Vect n a -> a
+index Z _ _ impossible
+index (S n) (Left ()) (x, xs) = x
+index (S n) (Right e) (x, xs) = index n e xs
 ```
 
 here is a test your implementation should pass:

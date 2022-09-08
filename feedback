@@ -1,0 +1,3 @@
+1. Had to explicitly add Exercises.File2 to the ipkg
+2. idris auto completion functions do not seem to work at all in a .md file (literate idris)
+3. in some ways, this was easier that the first exercise like reverse, zip, map and in some ways this was much harder for example the index function has an impossible branch but without any idris2 help, this turned out to be really hard and had to check the answers to make progress.
