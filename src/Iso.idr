@@ -1,6 +1,6 @@
 module Iso
 
-import Control.Relation
+import public Control.Relation
 
 public export
 record Iso (t1, t2 : Type) where

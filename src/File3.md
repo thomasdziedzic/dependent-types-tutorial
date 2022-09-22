@@ -16,7 +16,7 @@ to use this feature to implement and understand what are _algebraic data types_.
 The term _algebraic_ comes from the fact that data declaration follow an _algebra_,
 a set of terms and operation on terms that can be interpreted in a given context.
 For us, we are going to define the terms `0`, `1` and the operations `*` and `+`.
-To those terms we are going to interpret them in the contex of _Idris Types_.
+To those terms we are going to interpret them in the context of _Idris Types_.
 
 We use the following data declaration for our algebra of types:
 
@@ -54,7 +54,7 @@ data Unit : Type where
   MkUnit : Unit
 ```
 
-Idris has a slight idiocyntracie that both the _type_ `Unit` and the _value_ `MkUnit`
+Idris has a slight idiosyncrasy that both the _type_ `Unit` and the _value_ `MkUnit`
 can be written as `()`. To avoid confusion we're going to write `Unit` and `MkUnit`
 instead.
 
@@ -73,7 +73,7 @@ BoolDesc = One `Plus` One
 ```
 
 This algebra of types also explains why those types are _isomorphic_, that is, we
-can conver from and to each other without losing any information:
+can convert to and from each other without losing any information:
 
 ```idris
 BoolDesc1 : Desc
@@ -88,7 +88,7 @@ BoolDesc2 = Zero `Plus` (One `Plus` One)
 #### Isomorphisms
 
 Using the `Iso` type given in the file `Iso.idr`, prove that `ToType BoolDesc` is isomorphic to
-`ToType BoolDesc` and `ToType BoolDesc2`
+`ToType BoolDesc1` and `ToType BoolDesc2`
 
 ```idris
 
