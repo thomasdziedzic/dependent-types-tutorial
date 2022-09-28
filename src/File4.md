@@ -147,12 +147,12 @@ data Tri a b c = First a | Second b | Third c
 
 data EitherBoth a b = Left a | Right b | Both a b
 
-data Triple a b v = MkTriple a b c
+data Triple a b c = MkTriple a b c
 ```
 
 ## Lists and recursive types
 
-Our updated version does not allow to write types that have a resursive structure like `Nat`,
+Our updated version does not allow to write types that have a recursive structure like `Nat`,
 `List` and `Tree`.
 
 To fix that we are going to add a new constructor that describe types that reference themselves.
@@ -193,11 +193,11 @@ of `Mu`.
 
 We cannot write `ToType x xs` because we need to extend the context with a new type. This makes
 sense since we said that whenever we find ourself under a `Mu` we create a new variable at index
-`0` which refers to the type itself. But doing do results in the infinite loop:
+`0` which refers to the type itself. But doing so results in the infinite loop:
 
 
 ```
-  ToTypeFail (Mu x) = ToType x (ToType (Mu x) xs :: xs)
+  ToTypeFail (Mu x) xs = ToType x (ToType (Mu x) xs :: xs)
 ```
 
 For this to work we are going to need a new trick: fixpoints
