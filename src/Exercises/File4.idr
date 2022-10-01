@@ -3,7 +3,6 @@ module Exercises.File4
 import Data.Vect
 
 %default total
-%hide concat
 
 data DescVar : Type where
   Var   : DescVar
@@ -198,9 +197,9 @@ namespace Recursive
   length (In (Left x)) = In $ Left x
   length (In (Right (x, xs))) = In $ Right $ length xs
 
-  concat : ListTy a -> ListTy a -> ListTy a
-  concat (In (Left x)) y = y
-  concat (In (Right (x, xs))) y = In $ Right (x, concat xs y)
+  concat1 : ListTy a -> ListTy a -> ListTy a
+  concat1 (In (Left x)) y = y
+  concat1 (In (Right (x, xs))) y = In $ Right (x, concat1 xs y)
 
   partial
   inorder : TreeTy a -> ListTy a
@@ -208,4 +207,4 @@ namespace Recursive
   inorder (In (Right (x, l, r))) =
     let ls = inorder l
         rs = inorder r
-    in In $ Right (x, concat ls rs)
+    in In $ Right (x, concat1 ls rs)
