@@ -114,7 +114,7 @@ of `Nat` as the application of `List` on `One`
 - Implement booleans as the application of `Maybe` with `One`, and implement
   the `True` and `False` constructuer for it.
 
-- Implement `Maybe` as the application of `Either` with `Zero`,
+- Implement `Maybe` as the application of `Either` with `One`,
 
 - Implement `Unit` as the application of `List` with `Zero`
 
@@ -191,7 +191,7 @@ something that expects an _argument_ as input.
 To fix all those issues we are going to update our language with a _typing context_. That is,
 in addition to keeping track of how many variables we need, we are also going to track what kind
 of variables we are dealing with. In order to avoid any confusion between idris _types_ and the
-types inside our language, we are going to call the later "kinds". This is also to remain consistent
+types inside our language, we are going to call the latter "kinds". This is also to remain consistent
 with existing literature about haskell where the "type of types" is called a _kind_.
 
 Our language, therefore, has two _kinds_: Either we are a plain kind,
@@ -208,7 +208,7 @@ data Kind : Type where
 ```
 
 We use a custom operator to ease the reading of those kinds, I read the operator as the "fat arrow"
-which is mean to be the idris analogous of `->`. Think of it as the outline of a regular
+which is meant to be the idris analogous of `->`. Think of it as the outline of a regular
 arrow.
 
 Our typing context (or kinding context?) is now a list of kinds, rather than a natural number, here
